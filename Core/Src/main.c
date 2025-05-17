@@ -99,25 +99,11 @@ int main(void)
   {
 	    HAL_UART_Receive_IT(&huart2, &rx, 1);
 
-	    if (rx == 103)  // 'g' (ASCII 103)
-	    {
-	        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-	    }
-	    else if (rx == 111)  // 'o' (ASCII 111)
-	    {
-	        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-	    }
-	    else if (rx == 114)  // 'r' (ASCII 114)
-	    {
-	        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
-	    }
-	    else if (rx == 98)   // 'b' (ASCII 98)
-	    {
-	        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
-	    }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	    HAL_Delay(300);
   }
   /* USER CODE END 3 */
 }
@@ -168,6 +154,26 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (rx == 103)  // 'g' (ASCII 103)
+    {
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+    }
+    else if (rx == 111)  // 'o' (ASCII 111)
+    {
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+    }
+    else if (rx == 114)  // 'r' (ASCII 114)
+    {
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
+    }
+    else if (rx == 98)   // 'b' (ASCII 98)
+    {
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+    }
+
+}
 
 /* USER CODE END 4 */
 
